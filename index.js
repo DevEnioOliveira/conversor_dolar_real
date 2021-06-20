@@ -11,16 +11,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 const port = process.env.PORT || 3000;
-
+const api_bcb = require('./lib/api-bcb');
 
 
 app.get('/', async( req, res) => {
-    res.render('home')
+    const cotacao = await api_bcb.getCotacao()
+    res.render('home', {
+        cotacao
+    })
 })
 
 app.get('/cotacao', async(req,res) => {
+
     const { cotacao, quantidade} = req.query;
     const conversao = convert.convert(cotacao,quantidade)
+
    if(cotacao && quantidade) {
         res.render('cotacao', {
             error: false,
