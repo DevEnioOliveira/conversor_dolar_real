@@ -1,0 +1,25 @@
+<%-include('header')%>
+<body>
+    <div class="flex-container">
+        <div class="img-logo"></div>
+         <div class="flex-form-container">
+             <div class="painel">
+                <% if (error) { %>
+                    <%= error%>
+                <% } else { %>
+                    Quantidade: <%=quantidade%> 
+                    <br>
+                    <br>
+                    Cotação: <%=cotacao%>
+                    <br>
+                    <br>
+                    Total: <%=conversao%>
+              <% } %>
+             </div>
+             <div class="button-back">
+                 <a href="/">Nova conversão</a>
+             </div>
+         </div>
+    </div>
+
+<%-include('footer')%>
